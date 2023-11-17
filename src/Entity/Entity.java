@@ -7,7 +7,8 @@ public class Entity {
 	public int x, y;
 	public int speed;
 	
-	public BufferedImage idle_01, idle_02, idle_03, idle_04, runningDown_01, runningDown_02, runningDown_03, runningDown_04, runningDown_05, runningDown_06;
+	public BufferedImage idle_01, idle_02, idle_03, idle_04, runningDown_01, runningDown_02, runningUp_01, runningUp_02, 
+		runningLeft_01, runningLeft_02, runningRight_01, runningRight_02;
 	public String direction;
 	
 	public int spriteCounter = 0;
