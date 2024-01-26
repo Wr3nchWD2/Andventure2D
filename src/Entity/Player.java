@@ -26,7 +26,11 @@ public class Player extends Entity{
 		screenX = gW.screenWidth/2;
 		screenY = gW.screenHeight/2;
 		
-		collisionArea = new Rectangle(20, 24, 48, 48);
+		collisionArea = new Rectangle();
+		collisionArea.x = 20;
+		collisionArea.y = 40;
+		collisionArea.width = 28;
+		collisionArea.height = 24;
 		
 		setDefaultValue();
 		getPlayerImage();
@@ -82,7 +86,7 @@ public class Player extends Entity{
 		collisionTriggered = false;
 		gW.cCode.checkTile(this);
 		
-		if(collisionTriggered = false) {
+		if(collisionTriggered == false) {
 			switch(direction) {
 			case "up":	worldY -= speed; break;			
 			case "down": worldY += speed; break;	

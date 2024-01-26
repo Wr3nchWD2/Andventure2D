@@ -19,5 +19,5 @@ public class Entity {
 	
 	// COLLISION VARIABLES
 	public Rectangle collisionArea;
-	public boolean collisionTriggered = true;
+	public boolean collisionTriggered = false;
 }
