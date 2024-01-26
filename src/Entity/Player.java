@@ -1,6 +1,7 @@
 package Entity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -14,6 +15,7 @@ public class Player extends Entity{
 	GameWindow gW;
 	KeyHandler kH;
 	
+	// SCREEN IN PIXILS
 	public final int screenX;
 	public final int screenY;
 	
@@ -23,6 +25,8 @@ public class Player extends Entity{
 		
 		screenX = gW.screenWidth/2;
 		screenY = gW.screenHeight/2;
+		
+		collisionArea = new Rectangle(20, 24, 48, 48);
 		
 		setDefaultValue();
 		getPlayerImage();
@@ -36,6 +40,7 @@ public class Player extends Entity{
 		direction = "down";
 			
 	}	
+	// INITIALIZING THE PLAYER SPRITES
 	public void getPlayerImage() {
 		try {
 			
@@ -55,28 +60,37 @@ public class Player extends Entity{
 			e.printStackTrace();
 		}
 	}
+	// SETTING THE DIRECTION OF THE SPRITE & CHECKING COLLISION
 	public void update() {
 
 		if (kH.upPressed == true) {
 			direction = "up";
-			worldY -= speed;
 		}
 		else if (kH.downPressed == true) {
 			direction = "down";
-			worldY += speed;
 		}
 		else if (kH.leftPressed == true) {
 			direction = "left";
-			worldX -= speed;
 		}
 		else if (kH.rightPressed == true) {
 			direction = "right";
-			worldX += speed;
 		}
 		else {
 			direction = "idle";
 		}
 		
+		collisionTriggered = false;
+		gW.cCode.checkTile(this);
+		
+		if(collisionTriggered = false) {
+			switch(direction) {
+			case "up":	worldY -= speed; break;			
+			case "down": worldY += speed; break;	
+			case "left": worldX -= speed; break;		 	
+			case "right": worldX += speed; break;			
+			}	
+		}
+			
 		spriteCounter++;
 		if(spriteCounter > 4) {
 			if (spriteNum == 1) {
@@ -89,6 +103,7 @@ public class Player extends Entity{
 		}
 	}
 	
+	// DRAWING THE PLAYER
 	public void draw(Graphics2D g2d) {
 		BufferedImage image = null;
 		

@@ -9,7 +9,8 @@ public class KeyHandler implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 
 	}
-
+	
+	// START MOVEMENT KEY CHECK
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();
 
@@ -26,7 +27,8 @@ public class KeyHandler implements KeyListener{
 			rightPressed = true;
 		}
 	}
-
+	
+	// END MOVEMENT KEY CHECK
 	public void keyReleased(KeyEvent e) {
 		int code = e.getKeyCode();
 

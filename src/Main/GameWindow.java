@@ -13,10 +13,10 @@ import java.awt.Graphics2D;
 public class GameWindow extends JPanel implements Runnable {
 	
 	// SCREEN SETTINGS
-	final int mainTileSize = 16; // 16 x 16 tile
-	final int scale = 4; // 96 x 96 tiles
+	final int mainTileSize = 16; // initially 16 x 16 tile 
+	final int scale = 4; // scaled 64 x 64 tiles
 
-	public final int tileSize = mainTileSize * scale; // 48 x 48 tiles
+	public final int tileSize = mainTileSize * scale; // 64 x 64 tiles
 	public final int maxTileOnScreenY = 12;
 	public final int maxTileOnScreenX = 16;
 	public final int screenWidth = tileSize * maxTileOnScreenX;
@@ -34,8 +34,10 @@ public class GameWindow extends JPanel implements Runnable {
 	TileManager tileM = new TileManager(this);
 	KeyHandler kH = new KeyHandler();
 	Thread gameThread;
+	public CollisionCode cCode = new CollisionCode(this);
 	public Player player = new Player(this, kH);
-
+	
+	// INITIALIZING THE WINDOW
 	public GameWindow() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setBackground(Color.BLACK);
@@ -43,7 +45,8 @@ public class GameWindow extends JPanel implements Runnable {
 		this.addKeyListener(kH);
 		this.setFocusable(true);
 	}
-
+	
+	// STARTING THE GAME THREAD/ STARTING THE GAME
 	public void startGameThread() {
 
 		gameThread = new Thread(this);
@@ -52,7 +55,8 @@ public class GameWindow extends JPanel implements Runnable {
 
 	@Override
 	public void run() {
-
+		
+		// CREATING THE FPS
 		float drawInt = 1000000000 / fps;
 		double nextDrawTime = System.nanoTime() + drawInt;
 

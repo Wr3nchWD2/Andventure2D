@@ -12,16 +12,20 @@ import Main.GameWindow;
 
 public class TileManager {
 	
+	// INSTANTIATIONS
 	GameWindow gw;
-	Tile[] tile;
-	int mapTileNum[] [];
+	public Tile[] tile;
+	public int mapTileNum[] [];
 	
 	
 	public TileManager(GameWindow gw) {
 		this.gw = gw;
 		
+		// NUMBER OF TILE ASSETS
 		tile = new Tile[8];
 		mapTileNum = new int[gw.maxWorldCol] [gw.maxWorldRow];
+		
+		// GETTING TILES AND TEXT MAPS
 		GetTileImage();
 		LoadMap("/TextMaps/WorldMap_01.txt");
 	}
@@ -30,20 +34,27 @@ public class TileManager {
 		
 		try {
 			
+			// GRASS
 			tile[0] = new Tile();
 			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/Grass_01.png"));
 			
 			tile[1] = new Tile();
 			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/Grass_02.png"));	
-				
-			tile[2] = new Tile();
-			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/MesaBrick_01.png"));
 			
+			// BRICK
+			tile[2] = new Tile();
+			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/StoneBrick_01.png"));
+			tile[2].collision = true;
+			
+			// TREES
 			tile[3] = new Tile();
 			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/LightningTrunk_01.png"));
-
+			tile[3].collision = true;
+			
 			tile[4] = new Tile();
 			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/OakTreeBottom_01.png"));
+			tile[4].collision = true;	
+			
 			tile[5] = new Tile();
 			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/OakTreeTop_01.png"));
 			
@@ -51,6 +62,7 @@ public class TileManager {
 			e.printStackTrace();
 		}
 	}
+	// DECRYPTING THE TEXTMAP
 	public void LoadMap(String filePath) {
 		try {			
 			InputStream is = getClass().getResourceAsStream(filePath);			
@@ -81,6 +93,7 @@ public class TileManager {
 			
 		}
 	}
+	// DRAWING TILES ON SCREEN
 	public void draw(Graphics2D g2) {
 		
 		int worldCol = 0;		
