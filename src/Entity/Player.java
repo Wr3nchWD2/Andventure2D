@@ -14,9 +14,15 @@ public class Player extends Entity{
 	GameWindow gW;
 	KeyHandler kH;
 	
+	public final int screenX;
+	public final int screenY;
+	
 	public Player(GameWindow gW, KeyHandler kH) {
 		this.gW = gW;
 		this.kH = kH;
+		
+		screenX = gW.screenWidth/2;
+		screenY = gW.screenHeight/2;
 		
 		setDefaultValue();
 		getPlayerImage();
@@ -24,8 +30,8 @@ public class Player extends Entity{
 	
 	public void setDefaultValue() {
 		
-		x = 100;
-		y = 100;
+		worldX = gW.tileSize * 25 - (gW.tileSize/2);
+		worldY = gW.tileSize * 25 - (gW.tileSize/2);
 		speed = 12;
 		direction = "down";
 			
@@ -53,19 +59,19 @@ public class Player extends Entity{
 
 		if (kH.upPressed == true) {
 			direction = "up";
-			y -= speed;
+			worldY -= speed;
 		}
 		else if (kH.downPressed == true) {
 			direction = "down";
-			y += speed;
+			worldY += speed;
 		}
 		else if (kH.leftPressed == true) {
 			direction = "left";
-			x -= speed;
+			worldX -= speed;
 		}
 		else if (kH.rightPressed == true) {
 			direction = "right";
-			x += speed;
+			worldX += speed;
 		}
 		else {
 			direction = "idle";
@@ -131,7 +137,7 @@ public class Player extends Entity{
 			
 		}
 		
-		g2d.drawImage(image, x, y, gW.tileSize, gW.tileSize, null);
+		g2d.drawImage(image, screenX, screenY, gW.tileSize, gW.tileSize, null);
 	}
 			
 }
