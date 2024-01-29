@@ -36,13 +36,32 @@ public class CollisionCode {
 			}
 			break;			
 		case "down":
+			entityBR = (entityBWY + entity.speed) / gW.tileSize;
+			tilenum1 = gW.tileM.mapTileNum[entityLC][entityBR];
+			tilenum2 = gW.tileM.mapTileNum[entityRC][entityBR];
+			if(gW.tileM.tile[tilenum1].collision == true || gW.tileM.tile[tilenum2].collision == true)
+			{
+				entity.collisionTriggered = true;
+			}
 			break;		
 		case "left":
+			entityLC = (entityLWX - entity.speed) / gW.tileSize;
+			tilenum1 = gW.tileM.mapTileNum[entityLC][entityBR];
+			tilenum2 = gW.tileM.mapTileNum[entityLC][entityTR];
+			if(gW.tileM.tile[tilenum1].collision == true || gW.tileM.tile[tilenum2].collision == true)
+			{
+				entity.collisionTriggered = true;
+			}
 			break;		
 		case "right":
+			entityRC = (entityRWX + entity.speed) / gW.tileSize;
+			tilenum1 = gW.tileM.mapTileNum[entityRC][entityBR];
+			tilenum2 = gW.tileM.mapTileNum[entityRC][entityTR];
+			if(gW.tileM.tile[tilenum1].collision == true || gW.tileM.tile[tilenum2].collision == true)
+			{
+				entity.collisionTriggered = true;
+			}
 			break;		
-		case "idle":
-			break;
 		
 		}
 		

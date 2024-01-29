@@ -27,9 +27,9 @@ public class Player extends Entity{
 		screenY = gW.screenHeight/2;
 		
 		collisionArea = new Rectangle();
-		collisionArea.x = 20;
+		collisionArea.x = 22;
 		collisionArea.y = 40;
-		collisionArea.width = 28;
+		collisionArea.width = 20;
 		collisionArea.height = 24;
 		
 		setDefaultValue();
