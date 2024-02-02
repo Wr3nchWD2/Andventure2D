@@ -22,7 +22,7 @@ public class TileManager {
 		this.gw = gw;
 		
 		// NUMBER OF TILE ASSETS
-		tile = new Tile[8];
+		tile = new Tile[60];
 		mapTileNum = new int[gw.maxWorldCol] [gw.maxWorldRow];
 		
 		// GETTING TILES AND TEXT MAPS
@@ -39,24 +39,58 @@ public class TileManager {
 			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/Grass_01.png"));
 			
 			tile[1] = new Tile();
-			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/Grass_02.png"));	
-			
-			// BRICK
-			tile[2] = new Tile();
-			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/StoneBrick_01.png"));
-			tile[2].collision = true;
+			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/Grass_02.png"));			
 			
 			// TREES
+			tile[2] = new Tile();
+			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/LightningTrunk_01.png"));
+			tile[2].collision = true;
+			
 			tile[3] = new Tile();
-			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/LightningTrunk_01.png"));
-			tile[3].collision = true;
+			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/OakTreeBottom_01.png"));
+			tile[3].collision = true;	
 			
 			tile[4] = new Tile();
-			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/OakTreeBottom_01.png"));
-			tile[4].collision = true;	
+			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/OakTreeTop_01.png"));
 			
-			tile[5] = new Tile();
-			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/OakTreeTop_01.png"));
+			//WATER
+			
+			tile[51] = new Tile();
+			tile[51].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/WaterShallowBL_01.png"));
+			tile[51].collision = true;
+			
+			tile[52] = new Tile();
+			tile[52].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/WaterShallowB_01.png"));
+			tile[52].collision = true;
+			
+			tile[53] = new Tile();
+			tile[53].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/WaterShallowBR_01.png"));
+			tile[53].collision = true;
+			
+			tile[54] = new Tile();
+			tile[54].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/WaterShallowCL_01.png"));
+			tile[54].collision = true;
+			
+			tile[55] = new Tile();
+			tile[55].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/WaterShallow_01.png"));
+			tile[55].collision = true;
+			
+			tile[56] = new Tile();
+			tile[56].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/WaterShallowCR_01.png"));
+			tile[56].collision = true;
+			
+			tile[57] = new Tile();
+			tile[57].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/WaterShallowTL_01.png"));
+			tile[57].collision = true;			
+			
+			tile[58] = new Tile();
+			tile[58].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/WaterShallowT_01.png"));
+			tile[58].collision = true;
+			
+			tile[59] = new Tile();
+			tile[59].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/WaterShallowTR_01.png"));
+			tile[59].collision = true;
+			
 			
 		}catch(IOException e) {
 			e.printStackTrace();

@@ -3,6 +3,7 @@ package Main;
 import javax.swing.JPanel;
 
 import Entity.Player;
+import Items.OBJ;
 import Tile.TileManager;
 
 import java.awt.Color;
@@ -36,6 +37,7 @@ public class GameWindow extends JPanel implements Runnable {
 	Thread gameThread;
 	public CollisionCode cCode = new CollisionCode(this);
 	public Player player = new Player(this, kH);
+	public OBJ obj[] = new OBJ[16];
 	
 	// INITIALIZING THE WINDOW
 	public GameWindow() {
